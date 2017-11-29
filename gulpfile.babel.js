@@ -187,7 +187,7 @@ gulp.task('html:prod', () =>
         res = nunjucks.render('./article.njk', article);
       }
       fs.outputFile(
-        'dev/' + article.iss + '/' + slug + '.html',
+        'prod/' + article.iss + '/' + slug + '.html',
         res,
         'utf8',
         err => {
