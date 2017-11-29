@@ -239,6 +239,7 @@ gulp.task('production', [
   'styles:prod',
   'scripts:prod',
   'images:prod',
+  'contentimages:prod',
 ]);
 
 gulp.task('clean', () => del(['dev/', 'prod/']));
