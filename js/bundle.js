@@ -1,22 +1,22 @@
 !(function(e) {
-  function o(t) {
-    if (n[t]) return n[t].exports;
-    var d = (n[t] = { i: t, l: !1, exports: {} });
-    return e[t].call(d.exports, d, d.exports, o), (d.l = !0), d.exports;
+  function n(o) {
+    if (t[o]) return t[o].exports;
+    var i = (t[o] = { i: o, l: !1, exports: {} });
+    return e[o].call(i.exports, i, i.exports, n), (i.l = !0), i.exports;
   }
-  var n = {};
-  (o.m = e),
-    (o.c = n),
-    (o.d = function(e, n, t) {
-      o.o(e, n) ||
-        Object.defineProperty(e, n, {
+  var t = {};
+  (n.m = e),
+    (n.c = t),
+    (n.d = function(e, t, o) {
+      n.o(e, t) ||
+        Object.defineProperty(e, t, {
           configurable: !1,
           enumerable: !0,
-          get: t,
+          get: o,
         });
     }),
-    (o.n = function(e) {
-      var n =
+    (n.n = function(e) {
+      var t =
         e && e.__esModule
           ? function() {
               return e.default;
@@ -24,43 +24,84 @@
           : function() {
               return e;
             };
-      return o.d(n, 'a', n), n;
+      return n.d(t, 'a', t), t;
     }),
-    (o.o = function(e, o) {
-      return Object.prototype.hasOwnProperty.call(e, o);
+    (n.o = function(e, n) {
+      return Object.prototype.hasOwnProperty.call(e, n);
     }),
-    (o.p = ''),
-    o((o.s = 0));
+    (n.p = ''),
+    n((n.s = 0));
 })([
-  function(e, o, n) {
+  function(e, n, t) {
     'use strict';
     (0,
     (function(e) {
       return e && e.__esModule ? e : { default: e };
-    })(n(1)).default)();
+    })(t(1)).default)();
   },
-  function(e, o, n) {
+  function(e, n, t) {
     'use strict';
-    Object.defineProperty(o, '__esModule', { value: !0 }),
-      (o.default = function() {
+    Object.defineProperty(n, '__esModule', { value: !0 }),
+      (n.default = function() {
         $(document).ready(function() {
           var e = $(window),
-            o = e.height() / e.width(),
-            n = $('#top-bar'),
-            t = $('#top-bar-logo'),
-            d = $('#left-bar-logo'),
-            s = o > 1.2 ? 150 : 800;
+            n = e.height() / e.width(),
+            t = $('#top-bar'),
+            i = $('#top-bar-logo'),
+            r = $('#left-bar-logo'),
+            s = n > 1.2 ? 150 : 800;
           $(window).resize(function() {
-            (o = e.height() / e.width()), (s = o > 1.2 ? 150 : 800);
+            (n = e.height() / e.width()), (s = n > 1.2 ? 150 : 800);
           }),
             $(window).scroll(function() {
               $(window).scrollTop() >= s
-                ? (t.hasClass('logo-hidden') || t.addClass('logo-hidden'),
-                  d.hasClass('logo-hidden') && d.removeClass('logo-hidden'),
-                  n.hasClass('hidden') && n.removeClass('hidden'))
-                : (t.hasClass('logo-hidden') && t.removeClass('logo-hidden'),
-                  d.hasClass('logo-hidden') || d.addClass('logo-hidden'),
-                  n.hasClass('hidden') || n.addClass('hidden'));
+                ? (i.hasClass('logo-hidden') || i.addClass('logo-hidden'),
+                  r.hasClass('logo-hidden') && r.removeClass('logo-hidden'),
+                  t.hasClass('hidden') && t.removeClass('hidden'))
+                : (i.hasClass('logo-hidden') && i.removeClass('logo-hidden'),
+                  r.hasClass('logo-hidden') || r.addClass('logo-hidden'),
+                  t.hasClass('hidden') || t.addClass('hidden'));
+            }),
+            (0, o.default)();
+        });
+      });
+    var o = (function(e) {
+      return e && e.__esModule ? e : { default: e };
+    })(t(2));
+  },
+  function(e, n, t) {
+    'use strict';
+    Object.defineProperty(n, '__esModule', { value: !0 }),
+      (n.default = function() {
+        var e = $('.pswp')[0],
+          n = [];
+        $('.picture').each(function() {
+          var t = $(this),
+            o = (function() {
+              var e = [];
+              return (
+                t.find('a').each(function() {
+                  var n = $(this).attr('href'),
+                    t = $(this)
+                      .data('size')
+                      .split('x'),
+                    o = { src: n, w: t[0], h: t[1] };
+                  e.push(o);
+                }),
+                e
+              );
+            })();
+          $.each(o, function(e, t) {
+            (n[e] = new Image()), (n[e].src = t.src);
+          }),
+            t.on('click', 'figure', function(n) {
+              n.preventDefault();
+              var t = {
+                index: $(this).index(),
+                bgOpacity: 0.7,
+                showHideOpacity: !0,
+              };
+              new PhotoSwipe(e, PhotoSwipeUI_Default, o, t).init();
             });
         });
       });
